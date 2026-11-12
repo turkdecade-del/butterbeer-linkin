@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>This is Butter Beer | ไซรัปกลิ่นเนยคาราเมลสำหรับคาเฟ่และบาร์</title>
+<meta name="description" content="ไซรัปกลิ่นเนยและคาราเมลผสมมะม่วง ตราหอมสี สำหรับคาเฟ่และบาร์ มี อย. ขอตัวอย่างได้ผ่านฟอร์ม">
+<!-- แก้ [ใส่ชื่อ-github] และ [ชื่อ-repo] ให้ตรงกับที่โฮสต์จริง (og ต้องเป็น URL เต็ม) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="This is Butter Beer | Elevate Every Drink">
+<meta property="og:description" content="ไซรัปกลิ่นเนยคาราเมลสำหรับคาเฟ่และบาร์ ขอตัวอย่างได้ผ่านฟอร์ม">
+<meta property="og:image" content="https://[ใส่ชื่อ-github].github.io/[ชื่อ-repo]/images/og.jpg">
+<meta property="og:url" content="https://[ใส่ชื่อ-github].github.io/[ชื่อ-repo]/">
+<meta name="theme-color" content="#333333">
+<link rel="icon" href="images/profile.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  /* ===== สีและค่าหลัก (ดึงจากฉลาก Lot 2) แก้ที่นี่ที่เดียว ===== */
+  :root {
+    --bg: #333333;        /* เทาเข้มพื้นหลังฉลาก */
+    --bg-deep: #262626;   /* เทาเข้มกว่า ใช้กับการ์ด */
+    --yellow: #FFBF44;    /* เหลืองหลัก ใช้กับปุ่ม CTA */
+    --blue: #04419C;      /* น้ำเงินจากแถบหลังโลโก้ */
+    --pink: #F0709B;      /* ชมพูจากคลื่นด้านล่างฉลาก */
+    --cream: #FDE8B0;     /* ครีมอ่อน */
+    --white: #FFFFFF;
+    --muted: #C9C9C9;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: "Kanit", system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--white);
+    line-height: 1.5;
+    min-height: 100vh;
+  }
+
+  /* กรอบหน้า: กว้างสุด 480px จัดกึ่งกลางบนจอใหญ่ */
+  .page { max-width: 480px; margin: 0 auto; padding: 0 20px 40px; position: relative; }
+
+  /* แถบหยดไซรัปด้านบน (อ้างอิงลายบนฉลาก) */
+  .drip { display: block; width: calc(100% + 40px); margin: 0 -20px; height: auto; }
+
+  /* โลโก้ */
+  .logo-wrap { margin: -6px auto 0; text-align: center; }
+  .logo-wrap img { width: 100%; height: auto; display: block; border-radius: 16px; }
+
+  /* โปรไฟล์ของเติร์ก */
+  .profile { display: flex; align-items: center; gap: 14px; margin: 18px 0 10px; }
+  .profile img {
+    width: 64px; height: 64px; border-radius: 50%; object-fit: cover;
+    border: 3px solid var(--yellow); flex: none;
+  }
+  .profile .name { font-weight: 600; font-size: 1.05rem; line-height: 1.2; }
+  .profile .role { color: var(--muted); font-size: .85rem; font-weight: 300; }
+
+  .tagline { font-size: 1rem; font-weight: 300; color: var(--cream); margin-bottom: 22px; }
+
+  /* ปุ่มทั้งหมด สูงอย่างน้อย 48px */
+  .btn {
+    display: flex; align-items: center; gap: 14px;
+    min-height: 52px; padding: 10px 18px; margin-bottom: 12px;
+    border-radius: 14px; text-decoration: none; color: var(--white);
+    background: var(--bg-deep); border: 1.5px solid #555;
+    font-weight: 500; font-size: 1rem;
+    transition: transform .15s ease, border-color .15s ease, background .15s ease;
+  }
+  .btn:hover, .btn:focus-visible { border-color: var(--yellow); transform: translateY(-2px); outline: none; }
+  .btn svg { width: 24px; height: 24px; flex: none; fill: currentColor; }
+  .btn .label { flex: 1; }
+  .btn .arrow { opacity: .5; font-size: 1.1rem; }
+
+  /* ปุ่มหลัก (CTA) มีปุ่มเดียวที่เด่นสุด */
+  .btn.primary {
+    flex-direction: column; align-items: flex-start; gap: 2px; justify-content: center;
+    min-height: 74px; padding: 14px 20px;
+    background: var(--yellow); color: #231a00; border: none;
+    font-size: 1.25rem; font-weight: 700; margin-bottom: 18px;
+    box-shadow: 0 6px 0 #c98f1d;
+    animation: nudge 2.8s ease-in-out infinite;
+  }
+  .btn.primary:hover, .btn.primary:focus-visible { transform: translateY(-2px); }
+  .btn.primary .sub { font-size: .85rem; font-weight: 400; opacity: .8; }
+  @keyframes nudge { 0%,88%,100% { transform: none; } 94% { transform: translateY(-3px); } }
+  @media (prefers-reduced-motion: reduce) { .btn.primary { animation: none; } }
+
+  .section-title {
+    font-size: .8rem; letter-spacing: .12em; color: var(--yellow);
+    font-weight: 500; margin: 26px 0 10px; text-transform: uppercase;
+  }
+
+  /* แกลเลอรีเลื่อนแนวนอน */
+  .gallery {
+    display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory;
+    margin: 0 -20px; padding: 0 20px 6px; scrollbar-width: none;
+  }
+  .gallery::-webkit-scrollbar { display: none; }
+  .gallery img {
+    flex: none; width: 62%; aspect-ratio: 2 / 3; object-fit: cover;
+    border-radius: 14px; scroll-snap-align: center; background: var(--bg-deep);
+  }
+
+  /* จุดเด่น 3 ข้อ */
+  .points { list-style: none; display: grid; gap: 8px; }
+  .points li {
+    background: var(--bg-deep); border-left: 4px solid var(--pink);
+    border-radius: 10px; padding: 10px 14px; font-size: .95rem; font-weight: 300;
+  }
+  .points b { font-weight: 600; color: var(--white); }
+
+  footer { margin-top: 30px; text-align: center; color: var(--muted); font-size: .78rem; font-weight: 300; }
+  footer .fda { color: var(--cream); }
+</style>
+</head>
+
+<body>
+<main class="page">
+
+  <!-- แถบหยดไซรัปด้านบน -->
+  <svg class="drip" viewBox="0 0 480 90" preserveAspectRatio="none" aria-hidden="true">
+    <rect width="480" height="26" fill="#F0709B"/>
+    <path d="M0 22 C40 38 70 18 110 24 L110 50 C110 64 128 64 128 50 L128 30 C170 16 200 40 240 28 L240 62 C240 80 262 80 262 62 L262 30 C300 18 330 40 370 26 L370 46 C370 58 388 58 388 46 L388 26 C420 18 450 32 480 24 L480 0 L0 0 Z" fill="#FFBF44"/>
+  </svg>
+
+  <!-- โลโก้ (ตัดเฉพาะฝั่งซ้ายจากฉลากใหม่) -->
+  <div class="logo-wrap">
+    <img src="images/logo.png" alt="โลโก้ This is Butter Beer Elevate Every Drink" width="540" height="339">
+  </div>
+
+  <!-- โปรไฟล์ + tagline (เนื้อหามาจากตัวแปรใน script ด้านล่าง) -->
+  <div class="profile">
+    <img id="profileImg" alt="">
+    <div>
+      <div class="name" id="profileName"></div>
+      <div class="role" id="profileRole"></div>
+    </div>
+  </div>
+  <p class="tagline" id="tagline"></p>
+
+  <!-- ปุ่มหลัก + ปุ่มรอง ถูกสร้างจาก array ใน script -->
+  <div id="primaryArea"></div>
+  <div id="linkArea"></div>
+
+  <!-- จุดเด่น -->
+  <div class="section-title">ทำไมต้อง Butter Beer</div>
+  <ul class="points" id="points"></ul>
+
+  <!-- แกลเลอรี -->
+  <div class="section-title">เมนูตัวอย่างจากไซรัป</div>
+  <div class="gallery" id="gallery"></div>
+
+  <footer>
+    <div id="footerText"></div>
+    <div class="fda" id="fdaText"></div>
+  </footer>
+</main>
+
+<script>
+  /* =========================================================
+     ส่วนที่แก้บ่อย: แก้เฉพาะตรงนี้ ไม่ต้องแตะโครงสร้างด้านล่าง
+     ========================================================= */
+
+  // ข้อมูลโปรไฟล์
+  const profile = {
+    image: "images/profile.jpg",
+    alt: "เติร์ก ธนุฒิ นาคะนคร เจ้าของแบรนด์ This is Butter Beer",
+    name: "เติร์ก ธนุฒิ นาคะนคร",
+    role: "เจ้าของแบรนด์ This is Butter Beer"
+  };
+
+  // ตัวเลือก tagline ให้เลือกด้วยเลข index (0, 1, 2)
+  const taglineOptions = [
+    "ไซรัปกลิ่นเนยคาราเมลผสมมะม่วง สำหรับคาเฟ่และบาร์ ยกระดับทุกเมนูเครื่องดื่ม",
+    "Elevate Every Drink เติมความหอมเนยคาราเมลให้ทุกแก้วในเมนูของคุณ",
+    "ไซรัปเนยคาราเมลที่คาเฟ่และบาร์เอาไปทำเมนูใหม่ได้ทันที มี อย. ถูกต้อง"
+  ];
+  const taglineIndex = 0;
+
+  // ปุ่มหลัก (CTA) มีปุ่มเดียว
+  const primaryButton = {
+    text: "ขอตัวอย่างไซรัป",
+    sub: "สำหรับคาเฟ่และบาร์ กรอกฟอร์มแล้วทีมงานติดต่อกลับ",
+    url: "[ใส่ลิงก์ฟอร์มขอตัวอย่าง]"   // ใส่ลิงก์ Google Form / Typeform
+  };
+
+  // ปุ่มรอง: enabled=false คือซ่อนปุ่ม (LINE ยังไม่พร้อม จึงปิดไว้ก่อน)
+  const links = [
+    { type: "facebook",  text: "Facebook",  url: "https://www.facebook.com/share/1FWT9GedKv/?mibextid=wwXIfr", enabled: true },
+    { type: "instagram", text: "Instagram @this_is_butterbeer", url: "https://www.instagram.com/this_is_butterbeer/", enabled: true },
+    { type: "line",      text: "LINE OA สั่งซื้อ", url: "https://line.me/R/ti/p/@xxxx", enabled: false }
+    // TikTok: เพิ่มบรรทัดแบบ { type: "tiktok", text: "TikTok", url: "...", enabled: true } เมื่อพร้อม (ต้องเพิ่มไอคอนใน icons ด้วย)
+  ];
+
+  // จุดเด่น (แก้ข้อความได้ ควรมี 3 ข้อ)
+  const points = [
+    { head: "กลิ่นเนยคาราเมลผสมมะม่วง", body: "ใช้ได้ทั้งเมนูเย็น เมนูปั่น และค็อกเทล" },
+    { head: "มี อย. ถูกต้อง", body: "เลขทะเบียน 75-2-00860-6-0030 ตรวจสอบได้" },
+    { head: "ผลิตเพื่อ B2B", body: "คาเฟ่และบาร์ขอตัวอย่างลองก่อนตัดสินใจได้" }
+  ];
+
+  // ภาพแกลเลอรี (เรียงตามลำดับที่แสดง)
+  const gallery = [
+    { src: "images/hero.jpg", alt: "ไซรัป Butter Beer กับเครื่องดื่มใส่มะนาวและผงอบเชย" },
+    { src: "images/g2.jpg",   alt: "ค็อกเทลควันลอยกับไซรัป Butter Beer" },
+    { src: "images/g3.jpg",   alt: "เครื่องดื่มสตรอว์เบอร์รีบลูเบอร์รีกับไซรัป Butter Beer" },
+    { src: "images/g4.jpg",   alt: "บาร์เทนเดอร์กำลังริน Butter Beer ลงแก้วค็อกเทล" },
+    { src: "images/g5.jpg",   alt: "เบียร์โฟมครีมกับขวดไซรัป Butter Beer" }
+  ];
+
+  // ข้อความท้ายหน้า
+  const footer = {
+    text: "This is Butter Beer",
+    fda: "อย. 75-2-00860-6-0030"
+  };
+
+  /* =========================================================
+     ส่วนทำงาน (ไม่ต้องแก้): สร้างหน้าจากตัวแปรด้านบน
+     ========================================================= */
+
+  // ไอคอน SVG ของแต่ละช่องทาง
+  const icons = {
+    facebook: '<svg viewBox="0 0 24 24"><path d="M13.5 22v-8.2h2.8l.5-3.3h-3.3V8.4c0-.9.4-1.7 1.8-1.7h1.6V3.8s-1.4-.3-2.8-.3c-2.8 0-4.5 1.7-4.5 4.7v2.3H6.7v3.3h2.9V22h3.9z"/></svg>',
+    instagram: '<svg viewBox="0 0 24 24"><path fill-rule="evenodd" d="M7.5 2h9A5.500 5.500 0 0 1 22 7.500v9a5.500 5.500 0 0 1-5.500 5.500h-9A5.500 5.500 0 0 1 2 16.500v-9A5.500 5.500 0 0 1 7.500 2zm0 2A3.500 3.500 0 0 0 4 7.500v9A3.500 3.500 0 0 0 7.500 20h9a3.500 3.500 0 0 0 3.500-3.500v-9A3.500 3.500 0 0 0 16.500 4h-9zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5.300-3.300a1.200 1.200 0 1 1 0 2.400 1.200 1.200 0 0 1 0-2.400z"/></svg>',
+    line: '<svg viewBox="0 0 24 24"><path d="M12 3C6.800 3 2.600 6.400 2.600 10.600c0 3.700 3.300 6.800 7.800 7.400.3.100.7.200.8.500.1.300.1.600 0 .9l-.1.800c0 .2-.2.900.8.500s5-3 6.800-5.100c1.300-1.400 1.900-2.900 1.900-4.500C20.400 6.400 16.200 3 12 3z" transform="translate(0 .5)"/></svg>'
+  };
+  // ใช้ชื่อ type ที่ไม่มีไอคอนไม่ได้ ให้ใช้ไอคอนวงกลมว่างแทน
+  const fallbackIcon = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/></svg>';
+
+  // ใส่ข้อมูลโปรไฟล์และ tagline
+  const profileImg = document.getElementById("profileImg");
+  profileImg.src = profile.image;
+  profileImg.alt = profile.alt;
+  document.getElementById("profileName").textContent = profile.name;
+  document.getElementById("profileRole").textContent = profile.role;
+  document.getElementById("tagline").textContent = taglineOptions[taglineIndex];
+
+  // สร้างลิงก์ภายนอกแบบปลอดภัย (เปิดแท็บใหม่ + noopener)
+  function makeLink(className, url) {
+    const a = document.createElement("a");
+    a.className = className;
+    a.href = url;
+    a.target = "_blank";
+    a.rel = "noopener";
+    return a;
+  }
+
+  // สร้างปุ่มหลัก
+  const primary = makeLink("btn primary", primaryButton.url);
+  primary.innerHTML = '<span></span><span class="sub"></span>';
+  primary.children[0].textContent = primaryButton.text;
+  primary.children[1].textContent = primaryButton.sub;
+  document.getElementById("primaryArea").appendChild(primary);
+
+  // สร้างปุ่มรอง (เฉพาะที่ enabled)
+  const linkArea = document.getElementById("linkArea");
+  links.filter(l => l.enabled).forEach(l => {
+    const a = makeLink("btn", l.url);
+    a.innerHTML = (icons[l.type] || fallbackIcon) + '<span class="label"></span><span class="arrow">&rsaquo;</span>';
+    a.querySelector(".label").textContent = l.text;
+    linkArea.appendChild(a);
+  });
+
+  // สร้างจุดเด่น
+  const pointsEl = document.getElementById("points");
+  points.forEach(p => {
+    const li = document.createElement("li");
+    li.innerHTML = "<b></b> <span></span>";
+    li.querySelector("b").textContent = p.head + " ";
+    li.querySelector("span").textContent = p.body;
+    pointsEl.appendChild(li);
+  });
+
+  // สร้างแกลเลอรี (lazy load ภาพ)
+  const galleryEl = document.getElementById("gallery");
+  gallery.forEach(g => {
+    const img = document.createElement("img");
+    img.src = g.src;
+    img.alt = g.alt;
+    img.loading = "lazy";
+    galleryEl.appendChild(img);
+  });
+
+  // ท้ายหน้า
+  document.getElementById("footerText").textContent = footer.text;
+  document.getElementById("fdaText").textContent = footer.fda;
+</script>
+</body>
+</html>
